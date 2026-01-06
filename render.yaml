@@ -1,0 +1,42 @@
+services:
+  - type: web  # Required for persistent bots
+    name: 𝗧𝗵𝗲 𝗞𝗼𝗺𝗮𝗹 𝗕𝗼𝘁𝘀  # Renamed to match your app
+    env: docker  # Uses Dockerfile
+    dockerfilePath: ./Dockerfile  # Path to your Dockerfile
+    plan: free  # Free tier
+    resources:
+      cpu: 0.25  # Free tier limits
+      memory: 0.5GB
+    envVars:
+      # Telegram Bot Tokens (10 tokens as in app.json)
+      - key: BOT_TOKEN
+        description: "Main bot token from @BotFather"
+      - key: BOT_TOKEN2
+        description: "Secondary bot token"
+      - key: BOT_TOKEN3
+        description: "Secondary bot token"
+      - key: BOT_TOKEN4
+        description: "Secondary bot token"
+      - key: BOT_TOKEN5
+        description: "Secondary bot token"
+      - key: BOT_TOKEN6
+        description: "Secondary bot token"
+      - key: BOT_TOKEN7
+        description: "Secondary bot token"
+      - key: BOT_TOKEN8
+        description: "Secondary bot token"
+      - key: BOT_TOKEN9
+        description: "Secondary bot token"
+      - key: BOT_TOKEN10
+        description: "Secondary bot token"
+
+      # Bot Configuration
+      - key: CMD_HNDLR
+        value: "."  # Default handler (as in app.json)
+      - key: SUDO_USERS
+        description: "Sudo user IDs (space-separated)"
+      - key: OWNER_ID
+        description: "Bot owner's Telegram ID"
+
+      # Remove Heroku-specific keys (not needed on Render)
+      # HEROKU_API_KEY and HEROKU_APP_NAME are irrelevant here

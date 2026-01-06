@@ -1,0 +1,10 @@
+telethon
+cryptg
+heroku3
+python-dotenv
+speedtest-cli
+requests
+gitpython
+
+
+
