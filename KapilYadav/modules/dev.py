@@ -30,9 +30,9 @@ for client in clients:
         if not cmd: return await event.reply("<b>Code लिखो मालिक!</b>", parse_mode="html")
 
         start = datetime.now()
-        old_stderr, old_stdout = sys.stderr, sys.stdout
-        redirected_output, redirected_error = sys.stdout = StringIO(), sys.stderr = StringIO()
-        
+        sys.stdout = redirected_output = StringIO()
+sys.stderr = redirected_error = StringIO()
+
         try:
             await aexec(cmd, event)
         except Exception:
