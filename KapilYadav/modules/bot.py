@@ -117,17 +117,6 @@ async def sudolist_handler(event):
             except: message += f"• Unknown user - `{user_id}`\n"
         await event.reply(message)
 
-# यहाँ से logs_handler को हटा दिया गया है क्योंकि वह logs.py में है।
-
-async def set_text_handler(event):
-    if event.sender_id in SUDO_USERS:
-        cmd = event.pattern_match.group(1)
-        text = event.raw_text.split(None, 1)[1] if len(event.raw_text.split(None, 1)) > 1 else None
-        if not text: return await event.reply("Provide text.")
-        STORED_CONFIG[f"{cmd}_{event.chat_id}"] = text
-        await save_config()
-        await event.reply(f"{cmd} message saved!")
-
 async def echo_handler(event):
     if event.sender_id in SUDO_USERS:
         reply = await event.get_reply_message()
@@ -161,8 +150,6 @@ for client in clients:
     client.add_event_handler(sudo_handler, events.NewMessage(pattern=fr"{hl}sudo(?:\s+(.+))?", incoming=True))
     client.add_event_handler(unsudo_handler, events.NewMessage(pattern=fr"{hl}unsudo(?:\s+(.+))?", incoming=True))
     client.add_event_handler(sudolist_handler, events.NewMessage(pattern=fr"{hl}sudolist", incoming=True))
-    # client.add_event_handler(logs_handler...) <- यह लाइन यहाँ से हटा दी गई है
-    client.add_event_handler(set_text_handler, events.NewMessage(pattern=fr"{hl}(setleave)(.+)?", incoming=True))
     client.add_event_handler(echo_handler, events.NewMessage(pattern=fr"{hl}echo", incoming=True))
     client.add_event_handler(rmecho_handler, events.NewMessage(pattern=fr"{hl}rmecho", incoming=True))
     client.add_event_handler(stopall_handler, events.NewMessage(pattern=fr"{hl}stopall", incoming=True))
