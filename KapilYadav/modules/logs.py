@@ -5,7 +5,7 @@ from telethon.errors import ForbiddenError
 from config import OWNER_ID, SUDO_USERS
 from config import X1, X2, X3, X4, X5, X6, X7, X8, X9, X10
 
-LOG_FILE = "Logs.txt"
+LOG_FILE = "logs.txt"
 
 clients = [X1, X2, X3, X4, X5, X6, X7, X8, X9, X10]
 
